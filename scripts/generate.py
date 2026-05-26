@@ -1,0 +1,714 @@
+#!/usr/bin/env python3
+"""
+Agentic AI Daily — HTML Generator
+Reads today's content from content_library.py and generates a beautiful index.html.
+"""
+
+import sys
+import os
+import datetime
+import json
+
+sys.path.insert(0, os.path.dirname(__file__))
+from content_library import get_todays_content, CONTENT_LIBRARY
+
+def build_quiz_js(quiz: dict) -> str:
+    options_js = json.dumps(quiz["options"])
+    return f"""
+    const quizOptions = {options_js};
+    const correctAnswer = {quiz["answer"]};
+    const explanation = {json.dumps(quiz["explanation"])};
+
+    function initQuiz() {{
+        const container = document.getElementById('quiz-options');
+        quizOptions.forEach((opt, i) => {{
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option';
+            btn.innerHTML = `<span class="opt-letter">${{String.fromCharCode(65+i)}}</span> ${{opt}}`;
+            btn.onclick = () => selectAnswer(i, btn);
+            container.appendChild(btn);
+        }});
+    }}
+
+    function selectAnswer(index, btn) {{
+        const allBtns = document.querySelectorAll('.quiz-option');
+        allBtns.forEach(b => b.disabled = true);
+        const feedbackEl = document.getElementById('quiz-feedback');
+
+        if (index === correctAnswer) {{
+            btn.classList.add('correct');
+            feedbackEl.innerHTML = `<div class="feedback correct-msg">
+                <span class="feedback-icon">🎉</span>
+                <div><strong>Correct!</strong> ${{explanation}}</div>
+            </div>`;
+        }} else {{
+            btn.classList.add('wrong');
+            allBtns[correctAnswer].classList.add('correct');
+            feedbackEl.innerHTML = `<div class="feedback wrong-msg">
+                <span class="feedback-icon">💡</span>
+                <div><strong>Not quite.</strong> ${{explanation}}</div>
+            </div>`;
+        }}
+        feedbackEl.style.display = 'block';
+    }}
+
+    document.addEventListener('DOMContentLoaded', initQuiz);
+    """
+
+
+def build_steps_html(steps: list) -> str:
+    items = "".join(
+        f'<div class="step-item"><div class="step-num">{i+1}</div><div class="step-text">{s}</div></div>'
+        for i, s in enumerate(steps)
+    )
+    return f'<div class="steps-flow">{items}</div>'
+
+
+def build_resources_html(resources: list) -> str:
+    items = "".join(
+        f'<a href="{r["url"]}" target="_blank" rel="noopener" class="resource-link">'
+        f'<span class="resource-icon">🔗</span>{r["title"]}'
+        f'<span class="resource-arrow">→</span></a>'
+        for r in resources
+    )
+    return items
+
+
+def build_key_terms_html(terms: list) -> str:
+    return "".join(f'<span class="term-chip">{t}</span>' for t in terms)
+
+
+def generate_html(content: dict, today: datetime.date, total_topics: int) -> str:
+    day_of_year = today.timetuple().tm_yday
+    topic_index = day_of_year % total_topics + 1
+    date_str = today.strftime("%B %d, %Y")
+    steps_html = build_steps_html(content["pattern"]["steps"])
+    resources_html = build_resources_html(content["resources"])
+    key_terms_html = build_key_terms_html(content["key_terms"])
+    quiz_js = build_quiz_js(content["quiz"])
+    tag_color = content["tag_color"]
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic AI Daily — {content['day_title']}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {{
+      --accent: {tag_color};
+      --accent-light: {tag_color}22;
+      --accent-mid: {tag_color}44;
+      --bg: #0a0b0f;
+      --bg2: #111318;
+      --bg3: #1a1d26;
+      --bg4: #222535;
+      --border: #2a2d3e;
+      --text: #e8eaf0;
+      --text2: #9ba3bf;
+      --text3: #6b7280;
+      --white: #ffffff;
+      --correct: #10b981;
+      --wrong: #ef4444;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --glow: 0 0 40px {tag_color}33;
+    }}
+
+    *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+
+    body {{
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }}
+
+    /* ─── Animated background ─── */
+    body::before {{
+      content: '';
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 10%, {tag_color}18 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, {tag_color}0f 0%, transparent 60%);
+      pointer-events: none;
+    }}
+
+    /* ─── Header ─── */
+    .site-header {{
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,11,15,0.85);
+      backdrop-filter: blur(20px);
+      position: sticky; top: 0; z-index: 100;
+    }}
+
+    .header-inner {{
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }}
+
+    .logo {{
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 18px; color: var(--white);
+      text-decoration: none;
+    }}
+    .logo-icon {{ font-size: 24px; }}
+    .logo-dot {{ color: var(--accent); }}
+
+    .header-meta {{
+      display: flex; align-items: center; gap: 16px;
+    }}
+    .date-badge {{
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 13px; color: var(--text2); font-weight: 500;
+    }}
+    .topic-counter {{
+      background: var(--accent-light); border: 1px solid var(--accent-mid);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 13px; color: var(--accent); font-weight: 600;
+    }}
+
+    /* ─── Hero ─── */
+    .hero {{
+      max-width: 1200px; margin: 0 auto;
+      padding: 80px 24px 60px;
+      display: grid; grid-template-columns: 1fr auto; gap: 48px;
+      align-items: center;
+    }}
+
+    .hero-tag {{
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-light); border: 1px solid var(--accent-mid);
+      border-radius: 100px; padding: 6px 16px;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }}
+
+    .hero h1 {{
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }}
+    .hero h1 .highlight {{
+      background: linear-gradient(135deg, var(--accent), {tag_color}cc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }}
+
+    .hero-desc {{
+      font-size: 18px; color: var(--text2);
+      max-width: 560px; line-height: 1.75;
+    }}
+
+    .hero-emoji {{
+      font-size: 120px; line-height: 1;
+      filter: drop-shadow(0 0 40px {tag_color}66);
+      animation: float 4s ease-in-out infinite;
+    }}
+
+    @keyframes float {{
+      0%, 100% {{ transform: translateY(0); }}
+      50% {{ transform: translateY(-12px); }}
+    }}
+
+    /* ─── Terms strip ─── */
+    .terms-strip {{
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 16px 24px;
+    }}
+    .terms-inner {{
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }}
+    .terms-label {{
+      font-size: 12px; color: var(--text3); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }}
+    .term-chip {{
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 12px; color: var(--text2); font-weight: 500;
+      transition: all 0.2s;
+    }}
+    .term-chip:hover {{
+      border-color: var(--accent); color: var(--accent);
+    }}
+
+    /* ─── Main grid ─── */
+    .main {{ max-width: 1200px; margin: 0 auto; padding: 48px 24px 80px; }}
+
+    .grid-top {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }}
+
+    .grid-bottom {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }}
+
+    .grid-full {{ margin-bottom: 24px; }}
+
+    /* ─── Cards ─── */
+    .card {{
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }}
+    .card:hover {{
+      border-color: var(--accent-mid);
+      box-shadow: var(--glow);
+    }}
+
+    .card-header {{
+      padding: 20px 24px 0;
+      display: flex; align-items: center; gap: 12px;
+    }}
+    .card-icon {{
+      width: 40px; height: 40px;
+      background: var(--accent-light); border: 1px solid var(--accent-mid);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }}
+    .card-title {{
+      font-size: 14px; font-weight: 700; color: var(--text2);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }}
+
+    .card-body {{ padding: 20px 24px 24px; }}
+
+    .card h2 {{
+      font-size: 22px; font-weight: 800; color: var(--white);
+      margin-bottom: 14px;
+    }}
+
+    .card p, .card-body {{ font-size: 15px; color: var(--text2); line-height: 1.75; }}
+    .card strong {{ color: var(--text); font-weight: 600; }}
+    .card em {{ color: var(--accent); font-style: normal; }}
+
+    /* ─── Pattern card ─── */
+    .pattern-name {{
+      font-size: 22px; font-weight: 800; color: var(--white);
+      margin-bottom: 8px;
+    }}
+    .pattern-desc {{
+      font-size: 15px; color: var(--text2); margin-bottom: 20px;
+    }}
+
+    .steps-flow {{
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 24px;
+    }}
+    .step-item {{
+      display: flex; align-items: flex-start; gap: 12px;
+    }}
+    .step-num {{
+      min-width: 28px; height: 28px;
+      background: var(--accent-light); border: 1px solid var(--accent-mid);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--accent);
+    }}
+    .step-text {{
+      font-size: 14px; color: var(--text2); padding-top: 5px;
+    }}
+
+    /* ─── Code block ─── */
+    .code-block {{
+      background: #0d0f14;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      overflow-x: auto;
+      position: relative;
+    }}
+    .code-block pre {{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #c9d1d9;
+      white-space: pre;
+    }}
+    .code-lang {{
+      position: absolute; top: 12px; right: 14px;
+      font-size: 11px; color: var(--text3); font-family: 'JetBrains Mono', monospace;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    }}
+
+    /* Python syntax highlighting */
+    .kw {{ color: #ff7b72; }}
+    .fn {{ color: #d2a8ff; }}
+    .st {{ color: #a5d6ff; }}
+    .cm {{ color: #8b949e; font-style: italic; }}
+    .nm {{ color: #79c0ff; }}
+
+    /* ─── Did you know ─── */
+    .dyk-card {{
+      background: linear-gradient(135deg, var(--accent-light), var(--bg2));
+      border-color: var(--accent-mid);
+    }}
+    .dyk-text {{
+      font-size: 16px; line-height: 1.75; color: var(--text);
+    }}
+    .dyk-text::before {{
+      content: '"';
+      font-size: 48px; line-height: 1; color: var(--accent);
+      font-family: Georgia, serif; display: block; margin-bottom: 8px;
+    }}
+
+    /* ─── Quiz ─── */
+    .quiz-question {{
+      font-size: 18px; font-weight: 700; color: var(--white);
+      margin-bottom: 20px; line-height: 1.5;
+    }}
+
+    #quiz-options {{
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 20px;
+    }}
+
+    .quiz-option {{
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      text-align: left; cursor: pointer;
+      font-size: 14px; color: var(--text); font-family: inherit;
+      display: flex; align-items: center; gap: 12px;
+      transition: all 0.2s;
+    }}
+    .quiz-option:hover:not(:disabled) {{
+      border-color: var(--accent); background: var(--accent-light);
+      color: var(--white);
+    }}
+    .quiz-option.correct {{
+      border-color: var(--correct); background: #10b98122;
+      color: var(--correct);
+    }}
+    .quiz-option.wrong {{
+      border-color: var(--wrong); background: #ef444422;
+      color: var(--wrong);
+    }}
+    .opt-letter {{
+      min-width: 26px; height: 26px;
+      background: var(--bg4); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 12px; color: var(--text2);
+    }}
+    .quiz-option.correct .opt-letter {{ background: var(--correct); color: white; }}
+    .quiz-option.wrong .opt-letter {{ background: var(--wrong); color: white; }}
+
+    #quiz-feedback {{ display: none; }}
+    .feedback {{
+      border-radius: var(--radius-sm); padding: 16px 18px;
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14px; line-height: 1.6;
+    }}
+    .correct-msg {{ background: #10b98118; border: 1px solid #10b98144; color: var(--correct); }}
+    .wrong-msg {{ background: #ef444418; border: 1px solid #ef444444; color: #fca5a5; }}
+    .feedback-icon {{ font-size: 20px; flex-shrink: 0; }}
+
+    /* ─── Resources ─── */
+    .resources-grid {{
+      display: flex; flex-direction: column; gap: 10px;
+    }}
+    .resource-link {{
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
+      font-size: 14px; font-weight: 500;
+      transition: all 0.2s;
+    }}
+    .resource-link:hover {{
+      border-color: var(--accent); background: var(--accent-light);
+      color: var(--white);
+    }}
+    .resource-icon {{ font-size: 16px; flex-shrink: 0; }}
+    .resource-arrow {{ margin-left: auto; color: var(--accent); font-weight: 700; }}
+
+    /* ─── Progress strip ─── */
+    .progress-strip {{
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      display: flex; align-items: center; gap: 24px;
+    }}
+    .progress-label {{
+      font-size: 14px; color: var(--text2); white-space: nowrap;
+      font-weight: 600;
+    }}
+    .progress-bar {{
+      flex: 1; height: 8px;
+      background: var(--bg4); border-radius: 100px; overflow: hidden;
+    }}
+    .progress-fill {{
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, var(--accent), {tag_color}cc);
+      transition: width 1s ease;
+    }}
+    .progress-pct {{
+      font-size: 14px; font-weight: 700; color: var(--accent);
+      white-space: nowrap;
+    }}
+
+    /* ─── Footer ─── */
+    footer {{
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 32px 24px;
+      text-align: center;
+    }}
+    .footer-inner {{
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }}
+    .footer-logo {{
+      font-size: 20px; font-weight: 800; color: var(--white);
+    }}
+    .footer-sub {{
+      font-size: 13px; color: var(--text3);
+    }}
+    .footer-badge {{
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 16px;
+      font-size: 12px; color: var(--text2); font-weight: 500;
+    }}
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {{
+      .hero {{ grid-template-columns: 1fr; padding: 48px 20px 40px; }}
+      .hero-emoji {{ font-size: 72px; order: -1; text-align: center; }}
+      .grid-top, .grid-bottom {{ grid-template-columns: 1fr; }}
+    }}
+
+    @media (max-width: 640px) {{
+      .header-inner {{ height: 56px; }}
+      .hero h1 {{ font-size: 2rem; }}
+      .hero-desc {{ font-size: 16px; }}
+      .card-body {{ padding: 16px 18px 20px; }}
+    }}
+
+    /* ─── Scroll animations ─── */
+    .card {{ opacity: 0; transform: translateY(20px); animation: fadeUp 0.5s ease forwards; }}
+    .card:nth-child(1) {{ animation-delay: 0.1s; }}
+    .card:nth-child(2) {{ animation-delay: 0.2s; }}
+    .card:nth-child(3) {{ animation-delay: 0.15s; }}
+    .card:nth-child(4) {{ animation-delay: 0.25s; }}
+    .card:nth-child(5) {{ animation-delay: 0.2s; }}
+
+    @keyframes fadeUp {{
+      to {{ opacity: 1; transform: translateY(0); }}
+    }}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🤖</span>
+      Agentic AI<span class="logo-dot">.</span>daily
+    </div>
+    <div class="header-meta">
+      <span class="date-badge">📅 {date_str}</span>
+      <span class="topic-counter">Topic {topic_index} / {total_topics}</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">
+      {content['tag']}
+    </div>
+    <h1>
+      <span class="highlight">{content['day_title']}</span>
+    </h1>
+    <p class="hero-desc">
+      Your daily deep-dive into Agentic AI. Fresh topic every day.
+      Build intuition, master patterns, ace interviews.
+    </p>
+  </div>
+  <div class="hero-emoji">{content['hero_icon']}</div>
+</section>
+
+<!-- KEY TERMS -->
+<div class="terms-strip">
+  <div class="terms-inner">
+    <span class="terms-label">Key terms</span>
+    {key_terms_html}
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- Row 1: Concept + Pattern -->
+  <div class="grid-top">
+
+    <!-- Concept Card -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📖</div>
+        <span class="card-title">Today's Concept</span>
+      </div>
+      <div class="card-body">
+        <h2>{content['concept']['title']}</h2>
+        <div style="font-size:15px; color: var(--text2); line-height:1.8;">
+          {content['concept']['body']}
+        </div>
+      </div>
+    </div>
+
+    <!-- Pattern Card -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚙️</div>
+        <span class="card-title">Design Pattern</span>
+      </div>
+      <div class="card-body">
+        <div class="pattern-name">{content['pattern']['name']}</div>
+        <div class="pattern-desc">{content['pattern']['description']}</div>
+        {steps_html}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Code block (full width) -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💻</div>
+        <span class="card-title">Code Example — {content['pattern']['name']}</span>
+      </div>
+      <div class="card-body" style="padding-bottom: 0;">
+        <div class="code-block">
+          <span class="code-lang">Python</span>
+          <pre>{content['pattern']['code']}</pre>
+        </div>
+      </div>
+      <div style="height: 24px;"></div>
+    </div>
+  </div>
+
+  <!-- Row 2: Did You Know + Quiz -->
+  <div class="grid-bottom">
+
+    <!-- Did you know -->
+    <div class="card dyk-card">
+      <div class="card-header">
+        <div class="card-icon">💡</div>
+        <span class="card-title">Did You Know?</span>
+      </div>
+      <div class="card-body">
+        <p class="dyk-text">{content['did_you_know']}</p>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🧩</div>
+        <span class="card-title">Quick Quiz</span>
+      </div>
+      <div class="card-body">
+        <div class="quiz-question">{content['quiz']['question']}</div>
+        <div id="quiz-options"></div>
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Resources -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📚</div>
+        <span class="card-title">Further Reading</span>
+      </div>
+      <div class="card-body">
+        <div class="resources-grid">
+          {resources_html}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-strip">
+    <span class="progress-label">Library progress</span>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <span class="progress-pct" id="progress-pct"></span>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">🤖 Agentic AI Daily</div>
+    <p class="footer-sub">
+      Auto-generated every day via GitHub Actions &amp; Python.
+      {total_topics} topics in rotation. Currently on topic {topic_index}.
+    </p>
+    <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  const pct = Math.round(({topic_index} / {total_topics}) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '% complete';
+
+  // Quiz
+  {quiz_js}
+</script>
+
+</body>
+</html>"""
+    return html
+
+
+def main():
+    today = datetime.date.today()
+    day_index = today.timetuple().tm_yday
+    total = len(CONTENT_LIBRARY)
+    content = get_todays_content(day_index)
+
+    html = generate_html(content, today, total)
+
+    out_path = os.path.join(os.path.dirname(__file__), "..", "index.html")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print(f"[OK] Generated index.html for {today.strftime('%B %d, %Y')} -- topic: {content['day_title']}")
+
+
+if __name__ == "__main__":
+    main()
