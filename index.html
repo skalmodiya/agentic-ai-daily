@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — Agent Observability & Tracing</title>
+  <title>Agentic AI Daily — What Is Agentic AI?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #475569;
-      --accent-light: #47556922;
-      --accent-mid: #47556944;
+      --accent: #6366f1;
+      --accent-light: #6366f122;
+      --accent-mid: #6366f144;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #47556933;
+      --glow: 0 0 40px #6366f133;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #47556918 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #4755690f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #6366f118 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #6366f10f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #475569cc);
+      background: linear-gradient(135deg, var(--accent), #6366f1cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #47556966);
+      filter: drop-shadow(0 0 40px #6366f166);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #475569cc);
+      background: linear-gradient(90deg, var(--accent), #6366f1cc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 June 13, 2026</span>
-      <span class="topic-counter">Topic 15 / 15</span>
+      <span class="date-badge">📅 June 14, 2026</span>
+      <span class="topic-counter">Topic 1 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Operations
+      Foundations
     </div>
     <h1>
-      <span class="highlight">Agent Observability & Tracing</span>
+      <span class="highlight">What Is Agentic AI?</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">🔭</div>
+  <div class="hero-emoji">🤖</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">Observability</span><span class="term-chip">Tracing</span><span class="term-chip">OpenTelemetry</span><span class="term-chip">LangSmith</span><span class="term-chip">Span</span>
+    <span class="term-chip">Agent</span><span class="term-chip">ReAct</span><span class="term-chip">Tool use</span><span class="term-chip">Autonomy</span><span class="term-chip">LLM</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Seeing Inside Your Agent</h2>
+        <h2>Agentic AI: The Core Idea</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          When an agent fails in production, you need to understand exactly what happened: what did it think, which tools did it call, what did they return?<br><br><strong>Observability</strong> for agents means capturing the full execution trace — every LLM call, tool call, input, output, latency, and token count.<br><br>Key observability tools:<br>• <strong>LangSmith</strong> — LangChain's tracing platform; visualizes the full agent run as a tree<br>• <strong>Arize Phoenix</strong> — open-source, supports OpenTelemetry<br>• <strong>Langfuse</strong> — open-source, self-hostable, Pydantic-native<br><br>What to instrument:<br>• LLM call inputs/outputs + token counts + latency<br>• Tool call names + arguments + return values<br>• Agent decision points (which branch was taken?)<br>• Final output + evaluation scores
+          An <strong>AI agent</strong> is a system that perceives its environment, makes decisions, and takes actions to achieve a goal — autonomously, over multiple steps. Unlike a simple chatbot that responds once and stops, an agent can <em>plan, use tools, check results, and retry</em> until the task is complete.<br><br>The key properties of an agent are:<br>• <strong>Goal-directed</strong> — it has an objective to fulfill<br>• <strong>Tool-using</strong> — it can call APIs, run code, search the web<br>• <strong>Memory-aware</strong> — it tracks context across steps<br>• <strong>Self-correcting</strong> — it evaluates its own outputs and adjusts
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">OpenTelemetry Tracing</div>
-        <div class="pattern-desc">Instrument agents with OpenTelemetry spans for each LLM and tool call — compatible with any OTEL-compatible backend.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Initialize OTEL tracer</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Wrap each LLM call in a span</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Add attributes: model, tokens, latency</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Wrap each tool call in a child span</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Add span events for agent decisions</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Export to your observability backend</div></div></div>
+        <div class="pattern-name">ReAct Pattern</div>
+        <div class="pattern-desc">Reason + Act — the foundational loop where an agent alternates between thinking about what to do and actually doing it.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Receive task</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Reason: what's the next action?</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Act: call a tool</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Observe result</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Repeat until done</div></div></div>
       </div>
     </div>
 
@@ -511,26 +511,18 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — OpenTelemetry Tracing</span>
+        <span class="card-title">Code Example — ReAct Pattern</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-
-tracer = trace.get_tracer('my-agent')
-
-def traced_llm_call(prompt: str, model: str):
-    with tracer.start_as_current_span('llm.call') as span:
-        span.set_attribute('model', model)
-        span.set_attribute('prompt.length', len(prompt))
-
-        start = time.time()
-        response = llm.complete(prompt)
-        span.set_attribute('latency_ms', (time.time()-start)*1000)
-        span.set_attribute('output.tokens', response.usage.output_tokens)
-        return response</pre>
+          <pre># Pseudocode: ReAct loop
+while not task_complete:
+    thought = llm.think(task, history)
+    action, args = parse_action(thought)
+    observation = tools[action](**args)
+    history.append(thought, action, observation)
+task_complete = llm.is_done(history)</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -547,7 +539,7 @@ def traced_llm_call(prompt: str, model: str):
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">The average production agent run involves 15-50 LLM calls and 10-30 tool calls. Without tracing, debugging a failure means reading through thousands of log lines — with tracing, you see the full execution tree in seconds.</p>
+        <p class="dyk-text">The term 'agent' in AI traces back to Marvin Minsky's 'Society of Mind' (1986), but modern LLM-based agents only became practical around 2023 when models became large enough to follow multi-step instructions reliably.</p>
       </div>
     </div>
 
@@ -558,7 +550,7 @@ def traced_llm_call(prompt: str, model: str):
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">What is the most important thing to capture in an agent trace for debugging?</div>
+        <div class="quiz-question">What makes an AI 'agentic' compared to a standard chatbot?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -575,7 +567,7 @@ def traced_llm_call(prompt: str, model: str):
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://smith.langchain.com/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangSmith Tracing Platform<span class="resource-arrow">→</span></a><a href="https://langfuse.com/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Langfuse — Open Source LLM Observability<span class="resource-arrow">→</span></a>
+          <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>ReAct: Synergizing Reasoning and Acting (Paper)<span class="resource-arrow">→</span></a><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Anthropic: Building Effective Agents<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -598,7 +590,7 @@ def traced_llm_call(prompt: str, model: str):
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 15.
+      15 topics in rotation. Currently on topic 1.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -606,15 +598,15 @@ def traced_llm_call(prompt: str, model: str):
 
 <script>
   // Progress bar
-  const pct = Math.round((15 / 15) * 100);
+  const pct = Math.round((1 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["Only the final output", "The full sequence of LLM inputs/outputs, tool calls, and results at each step", "Only error messages", "The system prompt only"];
+    const quizOptions = ["It uses a larger model", "It can take multi-step actions autonomously using tools", "It always browses the internet", "It requires no prompting"];
     const correctAnswer = 1;
-    const explanation = "Debugging requires replaying what the agent 'saw' at each decision point \u2014 the full trajectory of inputs, outputs, and tool results is the only way to understand why it made a specific choice.";
+    const explanation = "Agency = autonomous multi-step action toward a goal, using tools and self-correction \u2014 not just model size.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
