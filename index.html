@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — What Is Agentic AI?</title>
+  <title>Agentic AI Daily — Agent Memory Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #6366f1;
-      --accent-light: #6366f122;
-      --accent-mid: #6366f144;
+      --accent: #0ea5e9;
+      --accent-light: #0ea5e922;
+      --accent-mid: #0ea5e944;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #6366f133;
+      --glow: 0 0 40px #0ea5e933;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #6366f118 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #6366f10f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #0ea5e918 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #0ea5e90f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #6366f1cc);
+      background: linear-gradient(135deg, var(--accent), #0ea5e9cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #6366f166);
+      filter: drop-shadow(0 0 40px #0ea5e966);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #6366f1cc);
+      background: linear-gradient(90deg, var(--accent), #0ea5e9cc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 June 14, 2026</span>
-      <span class="topic-counter">Topic 1 / 15</span>
+      <span class="date-badge">📅 June 15, 2026</span>
+      <span class="topic-counter">Topic 2 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Foundations
+      Memory
     </div>
     <h1>
-      <span class="highlight">What Is Agentic AI?</span>
+      <span class="highlight">Agent Memory Systems</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">🤖</div>
+  <div class="hero-emoji">🧠</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">Agent</span><span class="term-chip">ReAct</span><span class="term-chip">Tool use</span><span class="term-chip">Autonomy</span><span class="term-chip">LLM</span>
+    <span class="term-chip">Vector store</span><span class="term-chip">RAG</span><span class="term-chip">Embeddings</span><span class="term-chip">Context window</span><span class="term-chip">Episodic memory</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Agentic AI: The Core Idea</h2>
+        <h2>How Agents Remember</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          An <strong>AI agent</strong> is a system that perceives its environment, makes decisions, and takes actions to achieve a goal — autonomously, over multiple steps. Unlike a simple chatbot that responds once and stops, an agent can <em>plan, use tools, check results, and retry</em> until the task is complete.<br><br>The key properties of an agent are:<br>• <strong>Goal-directed</strong> — it has an objective to fulfill<br>• <strong>Tool-using</strong> — it can call APIs, run code, search the web<br>• <strong>Memory-aware</strong> — it tracks context across steps<br>• <strong>Self-correcting</strong> — it evaluates its own outputs and adjusts
+          Memory is what separates a stateless chatbot from a capable agent. There are four distinct memory types every agent architect must understand:<br><br><strong>1. In-context memory</strong> — the current conversation window. Fast, but limited in size.<br><strong>2. External memory</strong> — vector databases (Pinecone, Chroma) storing past interactions as embeddings. Searchable at scale.<br><strong>3. Episodic memory</strong> — records of specific past events the agent can recall and reason from.<br><strong>4. Semantic memory</strong> — factual knowledge the agent has learned, often stored as structured documents.<br><br>Most production agents combine <em>in-context + external</em> memory: keep recent steps in the window, retrieve relevant history from a vector store via similarity search.
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">ReAct Pattern</div>
-        <div class="pattern-desc">Reason + Act — the foundational loop where an agent alternates between thinking about what to do and actually doing it.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Receive task</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Reason: what's the next action?</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Act: call a tool</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Observe result</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Repeat until done</div></div></div>
+        <div class="pattern-name">RAG-Augmented Memory</div>
+        <div class="pattern-desc">Retrieve relevant memories from a vector store before each LLM call, injecting only what's relevant into the context window.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">User query arrives</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Embed query → vector</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Search memory store (top-k)</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Inject retrieved docs into prompt</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">LLM generates grounded response</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Store new interaction as memory</div></div></div>
       </div>
     </div>
 
@@ -511,18 +511,24 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — ReAct Pattern</span>
+        <span class="card-title">Code Example — RAG-Augmented Memory</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre># Pseudocode: ReAct loop
-while not task_complete:
-    thought = llm.think(task, history)
-    action, args = parse_action(thought)
-    observation = tools[action](**args)
-    history.append(thought, action, observation)
-task_complete = llm.is_done(history)</pre>
+          <pre>import chromadb
+client = chromadb.Client()
+collection = client.get_or_create_collection('agent_memory')
+
+# Store a memory
+collection.add(documents=['User prefers Python over JS'],
+               ids=['mem_001'])
+
+# Retrieve relevant memories
+results = collection.query(
+    query_texts=['what language to use?'], n_results=3
+)
+context = '\n'.join(results['documents'][0])</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -539,7 +545,7 @@ task_complete = llm.is_done(history)</pre>
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">The term 'agent' in AI traces back to Marvin Minsky's 'Society of Mind' (1986), but modern LLM-based agents only became practical around 2023 when models became large enough to follow multi-step instructions reliably.</p>
+        <p class="dyk-text">GPT-4's context window holds ~128K tokens — about 100,000 words. Yet production agents often have millions of past interactions to reason from, which is why external vector memory is essential.</p>
       </div>
     </div>
 
@@ -550,7 +556,7 @@ task_complete = llm.is_done(history)</pre>
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">What makes an AI 'agentic' compared to a standard chatbot?</div>
+        <div class="quiz-question">Which memory type uses vector embeddings for similarity search?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -567,7 +573,7 @@ task_complete = llm.is_done(history)</pre>
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>ReAct: Synergizing Reasoning and Acting (Paper)<span class="resource-arrow">→</span></a><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Anthropic: Building Effective Agents<span class="resource-arrow">→</span></a>
+          <a href="https://python.langchain.com/docs/modules/memory/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangChain Memory Docs<span class="resource-arrow">→</span></a><a href="https://www.trychroma.com/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>ChromaDB — Vector Store for Agents<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -590,7 +596,7 @@ task_complete = llm.is_done(history)</pre>
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 1.
+      15 topics in rotation. Currently on topic 2.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -598,15 +604,15 @@ task_complete = llm.is_done(history)</pre>
 
 <script>
   // Progress bar
-  const pct = Math.round((1 / 15) * 100);
+  const pct = Math.round((2 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["It uses a larger model", "It can take multi-step actions autonomously using tools", "It always browses the internet", "It requires no prompting"];
+    const quizOptions = ["In-context memory", "External/vector memory", "Semantic memory", "Episodic memory"];
     const correctAnswer = 1;
-    const explanation = "Agency = autonomous multi-step action toward a goal, using tools and self-correction \u2014 not just model size.";
+    const explanation = "External vector memory stores embeddings in databases like Chroma or Pinecone and retrieves the most relevant chunks via cosine similarity.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
