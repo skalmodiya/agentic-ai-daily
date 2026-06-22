@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — Human-in-the-Loop Design</title>
+  <title>Agentic AI Daily — Prompt Engineering for Agents</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #f97316;
-      --accent-light: #f9731622;
-      --accent-mid: #f9731644;
+      --accent: #ec4899;
+      --accent-light: #ec489922;
+      --accent-mid: #ec489944;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #f9731633;
+      --glow: 0 0 40px #ec489933;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #f9731618 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #f973160f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #ec489918 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #ec48990f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #f97316cc);
+      background: linear-gradient(135deg, var(--accent), #ec4899cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #f9731666);
+      filter: drop-shadow(0 0 40px #ec489966);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #f97316cc);
+      background: linear-gradient(90deg, var(--accent), #ec4899cc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 June 21, 2026</span>
-      <span class="topic-counter">Topic 8 / 15</span>
+      <span class="date-badge">📅 June 22, 2026</span>
+      <span class="topic-counter">Topic 9 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Safety
+      Prompting
     </div>
     <h1>
-      <span class="highlight">Human-in-the-Loop Design</span>
+      <span class="highlight">Prompt Engineering for Agents</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">👥</div>
+  <div class="hero-emoji">✍️</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">HITL</span><span class="term-chip">Autonomy spectrum</span><span class="term-chip">Confidence threshold</span><span class="term-chip">Escalation</span><span class="term-chip">Irreversibility</span>
+    <span class="term-chip">System prompt</span><span class="term-chip">Chain-of-thought</span><span class="term-chip">XML tags</span><span class="term-chip">Persona</span><span class="term-chip">Hard constraints</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Keeping Humans Informed & In Control</h2>
+        <h2>Prompts Are Agent Architecture</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          Fully autonomous agents are powerful but risky — they can take irreversible actions. <strong>Human-in-the-loop (HITL)</strong> design creates checkpoints where a human approves or redirects the agent before critical actions.<br><br>A spectrum of autonomy:<br>• <strong>Manual</strong> — human approves every step<br>• <strong>Supervised</strong> — human approves only high-stakes actions (delete, send, purchase)<br>• <strong>Exception-based</strong> — agent runs freely but escalates when uncertain<br>• <strong>Fully autonomous</strong> — no human involvement (use only for low-risk, reversible tasks)<br><br>Best practice: <em>start supervised, measure error rates, gradually increase autonomy</em> as you build confidence in the system.
+          For LLM-based agents, the system prompt IS the architecture. A well-engineered prompt defines the agent's identity, constraints, tool usage style, and reasoning format.<br><br>Key components of an effective agent system prompt:<br><br><strong>Role & persona</strong> — 'You are a senior software engineer who...'<br><strong>Goal & scope</strong> — exactly what the agent should and should NOT do<br><strong>Reasoning format</strong> — specify how to think before acting (XML tags, chain-of-thought)<br><strong>Tool use guidelines</strong> — when to use each tool, how to handle errors<br><strong>Output format</strong> — how to structure the final answer<br><strong>Hard constraints</strong> — things the agent must never do (send without approval, delete files)
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">Interrupt-on-Confidence-Drop</div>
-        <div class="pattern-desc">Agent runs autonomously but interrupts for human approval when its confidence score drops below a threshold.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Agent executes steps autonomously</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Before each action, compute confidence</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">If confidence > threshold: proceed</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">If confidence < threshold: pause + notify human</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Human reviews context, approves/redirects</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Agent resumes with updated guidance</div></div></div>
+        <div class="pattern-name">Structured Reasoning Tags</div>
+        <div class="pattern-desc">Use XML-like tags to make the agent's reasoning explicit and parseable — Anthropic's recommended approach for Claude.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Agent reads task</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Opens <thinking> tag — reasons through approach</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Opens <tool_call> tag — structured tool invocation</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Opens <observation> tag — records result</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Repeats until done</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Opens <answer> tag — final response</div></div></div>
       </div>
     </div>
 
@@ -511,26 +511,31 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — Interrupt-on-Confidence-Drop</span>
+        <span class="card-title">Code Example — Structured Reasoning Tags</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>CONFIDENCE_THRESHOLD = 0.75
+          <pre>SYSTEM_PROMPT = """
+You are a research agent. Follow this format:
 
-def run_with_hitl(task, tools):
-    for step in agent.plan(task):
-        action, confidence = agent.decide(step)
+<thinking>
+Reason about what to do next.
+</thinking>
 
-        if confidence < CONFIDENCE_THRESHOLD:
-            # Interrupt for human review
-            human_input = notify_human(
-                f'Low confidence ({confidence:.0%}) on: {action}\n'
-                f'Context: {step}\nApprove? [y/n/redirect]'
-            )
-            if human_input.startswith('redirect'):
-                action = parse_redirect(human_input)
-        execute(action)</pre>
+<tool_call>
+{\"tool\": \"search_web\", \"query\": \"...\"}
+</tool_call>
+
+<observation>
+What did I learn from this tool call?
+</observation>
+
+Repeat until ready to answer, then:
+<answer>
+Final synthesized answer here.
+</answer>
+"""</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -547,7 +552,7 @@ def run_with_hitl(task, tools):
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">NASA's Mars rover missions use a form of HITL where the rover plans each day's route autonomously but uploads the plan for human review before execution — a real-world agentic system handling irreversible terrain traversal.</p>
+        <p class="dyk-text">Anthropic found that asking Claude to 'think step by step inside <thinking> tags before responding' reduces errors on multi-step tasks by 30-40% compared to direct responses — structured reasoning is measurably better.</p>
       </div>
     </div>
 
@@ -558,7 +563,7 @@ def run_with_hitl(task, tools):
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">When designing an agent that can send emails on your behalf, which autonomy level is safest to start with?</div>
+        <div class="quiz-question">Why do agent system prompts often include explicit 'hard constraints' (things the agent must never do)?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -575,7 +580,7 @@ def run_with_hitl(task, tools):
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Anthropic: Agentic AI Safety Principles<span class="resource-arrow">→</span></a><a href="https://www.alignmentforum.org/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>AI Alignment Forum: HITL Patterns<span class="resource-arrow">→</span></a>
+          <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Anthropic Prompt Engineering Guide<span class="resource-arrow">→</span></a><a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Chain-of-Thought Prompting Paper<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -598,7 +603,7 @@ def run_with_hitl(task, tools):
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 8.
+      15 topics in rotation. Currently on topic 9.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -606,15 +611,15 @@ def run_with_hitl(task, tools):
 
 <script>
   // Progress bar
-  const pct = Math.round((8 / 15) * 100);
+  const pct = Math.round((9 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["Fully autonomous", "Manual approval of every email", "Supervised \u2014 human approves before each send", "Exception-based only"];
-    const correctAnswer = 2;
-    const explanation = "Email sending is irreversible and visible to others. Supervised mode (approve before send) is the right starting point until you've validated the agent's judgment on many examples.";
+    const quizOptions = ["To make the prompt longer", "LLMs are unpredictable without boundaries \u2014 hard constraints act as safety rails", "It improves token efficiency", "Hard constraints speed up reasoning"];
+    const correctAnswer = 1;
+    const explanation = "Without explicit constraints, an agent optimizing for a goal can find creative but undesired shortcuts. Hard constraints in the prompt prevent catastrophic or irreversible actions.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
