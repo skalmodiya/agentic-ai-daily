@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — Prompt Engineering for Agents</title>
+  <title>Agentic AI Daily — LangChain & LangGraph</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #ec4899;
-      --accent-light: #ec489922;
-      --accent-mid: #ec489944;
+      --accent: #65a30d;
+      --accent-light: #65a30d22;
+      --accent-mid: #65a30d44;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #ec489933;
+      --glow: 0 0 40px #65a30d33;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #ec489918 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #ec48990f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #65a30d18 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #65a30d0f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #ec4899cc);
+      background: linear-gradient(135deg, var(--accent), #65a30dcc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #ec489966);
+      filter: drop-shadow(0 0 40px #65a30d66);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #ec4899cc);
+      background: linear-gradient(90deg, var(--accent), #65a30dcc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 June 22, 2026</span>
-      <span class="topic-counter">Topic 9 / 15</span>
+      <span class="date-badge">📅 June 23, 2026</span>
+      <span class="topic-counter">Topic 10 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Prompting
+      Frameworks
     </div>
     <h1>
-      <span class="highlight">Prompt Engineering for Agents</span>
+      <span class="highlight">LangChain & LangGraph</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">✍️</div>
+  <div class="hero-emoji">🦜</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">System prompt</span><span class="term-chip">Chain-of-thought</span><span class="term-chip">XML tags</span><span class="term-chip">Persona</span><span class="term-chip">Hard constraints</span>
+    <span class="term-chip">LangChain</span><span class="term-chip">LangGraph</span><span class="term-chip">State machine</span><span class="term-chip">Checkpointing</span><span class="term-chip">Conditional edges</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Prompts Are Agent Architecture</h2>
+        <h2>The Most Popular Agent Framework</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          For LLM-based agents, the system prompt IS the architecture. A well-engineered prompt defines the agent's identity, constraints, tool usage style, and reasoning format.<br><br>Key components of an effective agent system prompt:<br><br><strong>Role & persona</strong> — 'You are a senior software engineer who...'<br><strong>Goal & scope</strong> — exactly what the agent should and should NOT do<br><strong>Reasoning format</strong> — specify how to think before acting (XML tags, chain-of-thought)<br><strong>Tool use guidelines</strong> — when to use each tool, how to handle errors<br><strong>Output format</strong> — how to structure the final answer<br><strong>Hard constraints</strong> — things the agent must never do (send without approval, delete files)
+          <strong>LangChain</strong> is the dominant framework for building LLM applications. It provides composable abstractions for models, prompts, memory, tools, and chains.<br><br><strong>LangGraph</strong> extends LangChain for stateful, multi-actor agent workflows using a graph-based execution model. Each node in the graph is an agent action; edges define conditional transitions based on state.<br><br>When to use each:<br>• <strong>LangChain</strong> — RAG pipelines, simple tool-using agents, quick prototypes<br>• <strong>LangGraph</strong> — complex multi-step agents, branching logic, human-in-the-loop, stateful workflows that need checkpointing and replay<br><br>LangGraph's key innovation: <em>persistent state</em> — the agent's full execution state is checkpointed, enabling pause/resume, time-travel debugging, and HITL interrupts.
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">Structured Reasoning Tags</div>
-        <div class="pattern-desc">Use XML-like tags to make the agent's reasoning explicit and parseable — Anthropic's recommended approach for Claude.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Agent reads task</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Opens <thinking> tag — reasons through approach</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Opens <tool_call> tag — structured tool invocation</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Opens <observation> tag — records result</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Repeats until done</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Opens <answer> tag — final response</div></div></div>
+        <div class="pattern-name">LangGraph State Machine</div>
+        <div class="pattern-desc">Model agent logic as a directed graph where nodes are actions and edges are conditional transitions based on the agent's current state.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Define State (TypedDict)</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Create nodes (agent, tools, human_review)</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Add edges (conditional: agent→tools or agent→END)</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Set entry point</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Compile graph</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Invoke with initial state</div></div></div>
       </div>
     </div>
 
@@ -511,31 +511,29 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — Structured Reasoning Tags</span>
+        <span class="card-title">Code Example — LangGraph State Machine</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>SYSTEM_PROMPT = """
-You are a research agent. Follow this format:
+          <pre>from langgraph.graph import StateGraph, END
+from typing import TypedDict, Annotated
 
-<thinking>
-Reason about what to do next.
-</thinking>
+class AgentState(TypedDict):
+    messages: list
+    next_action: str
 
-<tool_call>
-{\"tool\": \"search_web\", \"query\": \"...\"}
-</tool_call>
-
-<observation>
-What did I learn from this tool call?
-</observation>
-
-Repeat until ready to answer, then:
-<answer>
-Final synthesized answer here.
-</answer>
-"""</pre>
+graph = StateGraph(AgentState)
+graph.add_node('agent', agent_node)
+graph.add_node('tools', tool_node)
+graph.add_conditional_edges(
+    'agent',
+    lambda s: s['next_action'],  # 'tools' or 'end'
+    {'tools': 'tools', 'end': END}
+)
+graph.add_edge('tools', 'agent')
+graph.set_entry_point('agent')
+app = graph.compile()</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -552,7 +550,7 @@ Final synthesized answer here.
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">Anthropic found that asking Claude to 'think step by step inside <thinking> tags before responding' reduces errors on multi-step tasks by 30-40% compared to direct responses — structured reasoning is measurably better.</p>
+        <p class="dyk-text">LangChain hit 1 million GitHub stars in under 2 years from launch (2022–2024), making it one of the fastest-growing open-source projects ever. LangGraph was spun out in 2024 specifically to handle the stateful complexity of production agent systems.</p>
       </div>
     </div>
 
@@ -563,7 +561,7 @@ Final synthesized answer here.
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">Why do agent system prompts often include explicit 'hard constraints' (things the agent must never do)?</div>
+        <div class="quiz-question">What is LangGraph's key advantage over basic LangChain agents?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -580,7 +578,7 @@ Final synthesized answer here.
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Anthropic Prompt Engineering Guide<span class="resource-arrow">→</span></a><a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Chain-of-Thought Prompting Paper<span class="resource-arrow">→</span></a>
+          <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangGraph Documentation<span class="resource-arrow">→</span></a><a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangChain GitHub<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -603,7 +601,7 @@ Final synthesized answer here.
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 9.
+      15 topics in rotation. Currently on topic 10.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -611,15 +609,15 @@ Final synthesized answer here.
 
 <script>
   // Progress bar
-  const pct = Math.round((9 / 15) * 100);
+  const pct = Math.round((10 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["To make the prompt longer", "LLMs are unpredictable without boundaries \u2014 hard constraints act as safety rails", "It improves token efficiency", "Hard constraints speed up reasoning"];
+    const quizOptions = ["Faster inference speed", "Persistent state with checkpointing, enabling HITL, pause/resume, and complex branching", "Better API documentation", "Lower cost per token"];
     const correctAnswer = 1;
-    const explanation = "Without explicit constraints, an agent optimizing for a goal can find creative but undesired shortcuts. Hard constraints in the prompt prevent catastrophic or irreversible actions.";
+    const explanation = "LangGraph's persistent state model means you can pause an agent mid-run, inject human feedback, replay from any checkpoint, and build workflows with complex conditional logic.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
