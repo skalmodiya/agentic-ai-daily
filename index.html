@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — Planning & Task Decomposition</title>
+  <title>Agentic AI Daily — Multi-Agent Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #10b981;
-      --accent-light: #10b98122;
-      --accent-mid: #10b98144;
+      --accent: #8b5cf6;
+      --accent-light: #8b5cf622;
+      --accent-mid: #8b5cf644;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #10b98133;
+      --glow: 0 0 40px #8b5cf633;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #10b98118 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #10b9810f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #8b5cf618 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #8b5cf60f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #10b981cc);
+      background: linear-gradient(135deg, var(--accent), #8b5cf6cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #10b98166);
+      filter: drop-shadow(0 0 40px #8b5cf666);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #10b981cc);
+      background: linear-gradient(90deg, var(--accent), #8b5cf6cc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 July 02, 2026</span>
-      <span class="topic-counter">Topic 4 / 15</span>
+      <span class="date-badge">📅 July 03, 2026</span>
+      <span class="topic-counter">Topic 5 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Planning
+      Architecture
     </div>
     <h1>
-      <span class="highlight">Planning & Task Decomposition</span>
+      <span class="highlight">Multi-Agent Systems</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">📋</div>
+  <div class="hero-emoji">🕸️</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">Task decomposition</span><span class="term-chip">Static planning</span><span class="term-chip">Dynamic planning</span><span class="term-chip">Hierarchical planning</span><span class="term-chip">Replanning</span>
+    <span class="term-chip">Orchestrator</span><span class="term-chip">Worker agent</span><span class="term-chip">Multi-agent</span><span class="term-chip">Delegation</span><span class="term-chip">Synthesis</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Breaking Problems Down</h2>
+        <h2>Agents Collaborating</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          Complex tasks can't be solved in one step. A capable agent must <strong>decompose</strong> a high-level goal into an ordered sequence of sub-tasks — a plan.<br><br>There are two major planning styles:<br><br><strong>Static planning</strong> — generate the full plan upfront, then execute. Fast and predictable, but brittle if early steps fail or reveal new information.<br><br><strong>Dynamic planning</strong> — generate the next step based on current observations. More resilient to surprises, but harder to reason about globally.<br><br>The most robust agents use <em>hierarchical planning</em>: a high-level planner breaks the goal into milestones, and sub-agents handle each milestone independently.
+          A single agent has limits: context window size, tool count, domain expertise. <strong>Multi-agent systems</strong> solve this by having specialized agents work together.<br><br>Common multi-agent topologies:<br><br><strong>Orchestrator → Workers</strong>: A supervisor agent breaks the task and delegates to specialist workers (researcher, coder, reviewer). Most common pattern.<br><br><strong>Peer-to-peer</strong>: Agents communicate as equals, negotiating and sharing findings. Used in debate/critique setups.<br><br><strong>Pipeline</strong>: Output of agent A becomes input to agent B (like a data pipeline but with reasoning at each stage).<br><br>The hardest problem in multi-agent design is <em>context sharing</em> — each agent needs enough context to act, but not so much that it's overwhelmed.
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">Plan-and-Execute</div>
-        <div class="pattern-desc">Separate the planning phase (list of steps) from the execution phase (run each step). Enables step-level retry and parallelism.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Receive high-level goal</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Planner LLM generates ordered steps</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Store plan</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Executor runs step[0]</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Evaluate result</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Update plan if needed</div></div><div class="step-item"><div class="step-num">7</div><div class="step-text">Advance to next step</div></div></div>
+        <div class="pattern-name">Orchestrator-Worker</div>
+        <div class="pattern-desc">A coordinator agent breaks the task, routes sub-tasks to specialized workers, and synthesizes their results.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Orchestrator receives goal</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Breaks into specialized sub-tasks</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Routes to: [Researcher | Coder | Reviewer]</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Workers execute in parallel</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Orchestrator collects results</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Synthesizes final answer</div></div></div>
       </div>
     </div>
 
@@ -511,24 +511,27 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — Plan-and-Execute</span>
+        <span class="card-title">Code Example — Orchestrator-Worker</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>def plan_and_execute(goal: str, tools: list):
-    # Phase 1: Generate plan
-    plan = planner_llm.generate(f'Break into steps: {goal}')
-    steps = parse_steps(plan)  # ['Step 1...', 'Step 2...']
+          <pre>class Orchestrator:
+    def __init__(self):
+        self.researcher = ResearchAgent()
+        self.coder = CodingAgent()
+        self.reviewer = ReviewAgent()
 
-    results = []
-    for step in steps:
-        # Phase 2: Execute each step
-        result = executor_llm.run(step, tools, context=results)
-        results.append(result)
-        if is_blocked(result):
-            steps = replanner.update(steps, result)
-    return synthesize(results)</pre>
+    def run(self, task: str):
+        plan = self.plan(task)
+        results = {}
+        # Parallel execution
+        with ThreadPoolExecutor() as ex:
+            futures = {
+                ex.submit(self.researcher.run, plan.research_task): 'research',
+                ex.submit(self.coder.run, plan.code_task): 'code',
+            }
+        return self.synthesize(results)</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -545,7 +548,7 @@
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">The 'Tree of Thoughts' technique from Princeton (2023) lets agents explore multiple planning branches simultaneously — like a chess engine considering move trees — dramatically improving success on hard reasoning tasks.</p>
+        <p class="dyk-text">Anthropic's internal 'Constitutional AI' uses a multi-agent setup where one model generates responses and another critiques them against ethical principles — a form of peer-to-peer agent architecture.</p>
       </div>
     </div>
 
@@ -556,7 +559,7 @@
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">What is the main advantage of dynamic planning over static planning?</div>
+        <div class="quiz-question">In an orchestrator-worker architecture, what is the orchestrator's primary job?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -573,7 +576,7 @@
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://arxiv.org/abs/2305.10601" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Tree of Thoughts Paper<span class="resource-arrow">→</span></a><a href="https://python.langchain.com/docs/modules/agents/agent_types/plan_and_execute" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangChain Plan-and-Execute Agent<span class="resource-arrow">→</span></a>
+          <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>AutoGen: Multi-Agent Conversation Framework<span class="resource-arrow">→</span></a><a href="https://www.crewai.com/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>CrewAI — Role-playing Multi-Agent Framework<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -596,7 +599,7 @@
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 4.
+      15 topics in rotation. Currently on topic 5.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -604,15 +607,15 @@
 
 <script>
   // Progress bar
-  const pct = Math.round((4 / 15) * 100);
+  const pct = Math.round((5 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["It's always faster", "It can adapt to unexpected results mid-execution", "It requires fewer LLM calls", "It doesn't need tools"];
+    const quizOptions = ["Execute all tool calls directly", "Manage context, delegate sub-tasks, and synthesize results", "Store all memory", "Write the final code"];
     const correctAnswer = 1;
-    const explanation = "Dynamic planning observes the result of each step and can replan on the fly, making it far more resilient when the real world doesn't match initial assumptions.";
+    const explanation = "The orchestrator is the coordinator: it plans, delegates to specialized workers, and assembles their outputs \u2014 it doesn't do the ground-level work itself.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
