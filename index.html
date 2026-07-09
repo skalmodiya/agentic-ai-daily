@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — LangChain & LangGraph</title>
+  <title>Agentic AI Daily — Model Context Protocol (MCP)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #65a30d;
-      --accent-light: #65a30d22;
-      --accent-mid: #65a30d44;
+      --accent: #7c3aed;
+      --accent-light: #7c3aed22;
+      --accent-mid: #7c3aed44;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #65a30d33;
+      --glow: 0 0 40px #7c3aed33;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #65a30d18 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #65a30d0f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #7c3aed18 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #7c3aed0f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #65a30dcc);
+      background: linear-gradient(135deg, var(--accent), #7c3aedcc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #65a30d66);
+      filter: drop-shadow(0 0 40px #7c3aed66);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #65a30dcc);
+      background: linear-gradient(90deg, var(--accent), #7c3aedcc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 July 08, 2026</span>
-      <span class="topic-counter">Topic 10 / 15</span>
+      <span class="date-badge">📅 July 09, 2026</span>
+      <span class="topic-counter">Topic 11 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Frameworks
+      Protocols
     </div>
     <h1>
-      <span class="highlight">LangChain & LangGraph</span>
+      <span class="highlight">Model Context Protocol (MCP)</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">🦜</div>
+  <div class="hero-emoji">🔌</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">LangChain</span><span class="term-chip">LangGraph</span><span class="term-chip">State machine</span><span class="term-chip">Checkpointing</span><span class="term-chip">Conditional edges</span>
+    <span class="term-chip">MCP</span><span class="term-chip">Resources</span><span class="term-chip">Tools</span><span class="term-chip">Protocol</span><span class="term-chip">Standardization</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>The Most Popular Agent Framework</h2>
+        <h2>The USB-C of AI Tools</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          <strong>LangChain</strong> is the dominant framework for building LLM applications. It provides composable abstractions for models, prompts, memory, tools, and chains.<br><br><strong>LangGraph</strong> extends LangChain for stateful, multi-actor agent workflows using a graph-based execution model. Each node in the graph is an agent action; edges define conditional transitions based on state.<br><br>When to use each:<br>• <strong>LangChain</strong> — RAG pipelines, simple tool-using agents, quick prototypes<br>• <strong>LangGraph</strong> — complex multi-step agents, branching logic, human-in-the-loop, stateful workflows that need checkpointing and replay<br><br>LangGraph's key innovation: <em>persistent state</em> — the agent's full execution state is checkpointed, enabling pause/resume, time-travel debugging, and HITL interrupts.
+          <strong>MCP (Model Context Protocol)</strong>, released by Anthropic in Nov 2024, is an open standard for connecting AI models to external tools and data sources — like USB-C but for AI integrations.<br><br>Before MCP, every team built custom integrations: one connector for GitHub, another for Slack, another for databases — all incompatible. MCP standardizes this with a single protocol.<br><br>MCP defines three primitives:<br>• <strong>Resources</strong> — readable data (files, DB rows, API responses) exposed to the model<br>• <strong>Tools</strong> — callable functions the model can invoke (like function calling, but standardized)<br>• <strong>Prompts</strong> — reusable prompt templates the server exposes<br><br>Any MCP client (Claude Desktop, Claude Code, VS Code) can connect to any MCP server instantly.
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">LangGraph State Machine</div>
-        <div class="pattern-desc">Model agent logic as a directed graph where nodes are actions and edges are conditional transitions based on the agent's current state.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Define State (TypedDict)</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Create nodes (agent, tools, human_review)</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Add edges (conditional: agent→tools or agent→END)</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Set entry point</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Compile graph</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Invoke with initial state</div></div></div>
+        <div class="pattern-name">MCP Server</div>
+        <div class="pattern-desc">Build an MCP server that exposes tools/resources to any MCP-compatible AI client — write once, use everywhere.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Install MCP SDK</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Create server instance</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Register tools with @server.call_tool()</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Register resources with @server.list_resources()</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Run server (stdio or HTTP)</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Connect from any MCP client (Claude Desktop etc.)</div></div></div>
       </div>
     </div>
 
@@ -511,29 +511,32 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — LangGraph State Machine</span>
+        <span class="card-title">Code Example — MCP Server</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>from langgraph.graph import StateGraph, END
-from typing import TypedDict, Annotated
+          <pre>from mcp.server import Server
+from mcp.server.stdio import stdio_server
+import mcp.types as types
 
-class AgentState(TypedDict):
-    messages: list
-    next_action: str
+server = Server('my-data-server')
 
-graph = StateGraph(AgentState)
-graph.add_node('agent', agent_node)
-graph.add_node('tools', tool_node)
-graph.add_conditional_edges(
-    'agent',
-    lambda s: s['next_action'],  # 'tools' or 'end'
-    {'tools': 'tools', 'end': END}
-)
-graph.add_edge('tools', 'agent')
-graph.set_entry_point('agent')
-app = graph.compile()</pre>
+@server.list_tools()
+async def list_tools():
+    return [types.Tool(
+        name='query_db',
+        description='Query the company database',
+        inputSchema={'type':'object',
+                     'properties':{'sql':{'type':'string'}}}
+    )]
+
+@server.call_tool()
+async def call_tool(name, arguments):
+    if name == 'query_db':
+        return db.execute(arguments['sql'])
+
+stdio_server(server)</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -550,7 +553,7 @@ app = graph.compile()</pre>
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">LangChain hit 1 million GitHub stars in under 2 years from launch (2022–2024), making it one of the fastest-growing open-source projects ever. LangGraph was spun out in 2024 specifically to handle the stateful complexity of production agent systems.</p>
+        <p class="dyk-text">Within 6 months of MCP's release, over 1,000 open-source MCP servers were published on GitHub — covering everything from Google Drive to Kubernetes to financial data APIs. It's becoming the de-facto standard for AI tool integration.</p>
       </div>
     </div>
 
@@ -561,7 +564,7 @@ app = graph.compile()</pre>
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">What is LangGraph's key advantage over basic LangChain agents?</div>
+        <div class="quiz-question">What problem does MCP solve that function calling alone doesn't?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -578,7 +581,7 @@ app = graph.compile()</pre>
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangGraph Documentation<span class="resource-arrow">→</span></a><a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangChain GitHub<span class="resource-arrow">→</span></a>
+          <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>MCP Official Documentation<span class="resource-arrow">→</span></a><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>MCP GitHub Repository<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -601,7 +604,7 @@ app = graph.compile()</pre>
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 10.
+      15 topics in rotation. Currently on topic 11.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -609,15 +612,15 @@ app = graph.compile()</pre>
 
 <script>
   // Progress bar
-  const pct = Math.round((10 / 15) * 100);
+  const pct = Math.round((11 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["Faster inference speed", "Persistent state with checkpointing, enabling HITL, pause/resume, and complex branching", "Better API documentation", "Lower cost per token"];
+    const quizOptions = ["MCP makes models smarter", "MCP standardizes tool integration so one server works with any MCP-compatible AI client", "MCP reduces latency", "MCP is only for Anthropic models"];
     const correctAnswer = 1;
-    const explanation = "LangGraph's persistent state model means you can pause an agent mid-run, inject human feedback, replay from any checkpoint, and build workflows with complex conditional logic.";
+    const explanation = "Function calling is model-specific. MCP is a universal protocol \u2014 build one MCP server and it works with Claude Desktop, VS Code extensions, and any other MCP client without changes.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
