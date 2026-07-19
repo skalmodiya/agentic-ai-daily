@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — Multi-Agent Systems</title>
+  <title>Agentic AI Daily — Retrieval-Augmented Generation (RAG)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #8b5cf6;
-      --accent-light: #8b5cf622;
-      --accent-mid: #8b5cf644;
+      --accent: #ef4444;
+      --accent-light: #ef444422;
+      --accent-mid: #ef444444;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #8b5cf633;
+      --glow: 0 0 40px #ef444433;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #8b5cf618 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #8b5cf60f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #ef444418 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #ef44440f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #8b5cf6cc);
+      background: linear-gradient(135deg, var(--accent), #ef4444cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #8b5cf666);
+      filter: drop-shadow(0 0 40px #ef444466);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #8b5cf6cc);
+      background: linear-gradient(90deg, var(--accent), #ef4444cc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 July 18, 2026</span>
-      <span class="topic-counter">Topic 5 / 15</span>
+      <span class="date-badge">📅 July 19, 2026</span>
+      <span class="topic-counter">Topic 6 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Architecture
+      Knowledge
     </div>
     <h1>
-      <span class="highlight">Multi-Agent Systems</span>
+      <span class="highlight">Retrieval-Augmented Generation (RAG)</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">🕸️</div>
+  <div class="hero-emoji">📚</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">Orchestrator</span><span class="term-chip">Worker agent</span><span class="term-chip">Multi-agent</span><span class="term-chip">Delegation</span><span class="term-chip">Synthesis</span>
+    <span class="term-chip">RAG</span><span class="term-chip">Vector embeddings</span><span class="term-chip">Chunking</span><span class="term-chip">Retrieval</span><span class="term-chip">Re-ranking</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Agents Collaborating</h2>
+        <h2>Grounding Agents in Facts</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          A single agent has limits: context window size, tool count, domain expertise. <strong>Multi-agent systems</strong> solve this by having specialized agents work together.<br><br>Common multi-agent topologies:<br><br><strong>Orchestrator → Workers</strong>: A supervisor agent breaks the task and delegates to specialist workers (researcher, coder, reviewer). Most common pattern.<br><br><strong>Peer-to-peer</strong>: Agents communicate as equals, negotiating and sharing findings. Used in debate/critique setups.<br><br><strong>Pipeline</strong>: Output of agent A becomes input to agent B (like a data pipeline but with reasoning at each stage).<br><br>The hardest problem in multi-agent design is <em>context sharing</em> — each agent needs enough context to act, but not so much that it's overwhelmed.
+          <strong>RAG</strong> lets agents answer questions about documents, codebases, or knowledge bases that are too large to fit in a context window — or that weren't in the model's training data.<br><br>The RAG pipeline:<br>1. <strong>Index</strong> — split documents into chunks, embed each chunk as a vector, store in a vector DB<br>2. <strong>Retrieve</strong> — at query time, embed the query and find the top-k most similar chunks<br>3. <strong>Generate</strong> — pass the retrieved chunks + query to the LLM, which answers using them<br><br>Advanced RAG techniques:<br>• <strong>Hybrid search</strong> — combine vector similarity with keyword (BM25) search<br>• <strong>Re-ranking</strong> — use a second model to re-score retrieved chunks before generation<br>• <strong>HyDE</strong> — generate a hypothetical answer first, then search for similar real documents
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">Orchestrator-Worker</div>
-        <div class="pattern-desc">A coordinator agent breaks the task, routes sub-tasks to specialized workers, and synthesizes their results.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Orchestrator receives goal</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Breaks into specialized sub-tasks</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Routes to: [Researcher | Coder | Reviewer]</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Workers execute in parallel</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Orchestrator collects results</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Synthesizes final answer</div></div></div>
+        <div class="pattern-name">RAG Pipeline</div>
+        <div class="pattern-desc">Index → Retrieve → Augment → Generate — the four-step pattern for knowledge-grounded agents.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Chunk documents (200-500 tokens)</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Embed chunks with embedding model</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Store in vector DB</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Query: embed user question</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Retrieve top-k similar chunks</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Inject into LLM prompt</div></div><div class="step-item"><div class="step-num">7</div><div class="step-text">Generate grounded answer</div></div></div>
       </div>
     </div>
 
@@ -511,27 +511,28 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — Orchestrator-Worker</span>
+        <span class="card-title">Code Example — RAG Pipeline</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>class Orchestrator:
-    def __init__(self):
-        self.researcher = ResearchAgent()
-        self.coder = CodingAgent()
-        self.reviewer = ReviewAgent()
+          <pre>from sentence_transformers import SentenceTransformer
+import chromadb
 
-    def run(self, task: str):
-        plan = self.plan(task)
-        results = {}
-        # Parallel execution
-        with ThreadPoolExecutor() as ex:
-            futures = {
-                ex.submit(self.researcher.run, plan.research_task): 'research',
-                ex.submit(self.coder.run, plan.code_task): 'code',
-            }
-        return self.synthesize(results)</pre>
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
+db = chromadb.Client()
+col = db.create_collection('docs')
+
+# Index
+chunks = split_documents(docs, chunk_size=400)
+col.add(documents=chunks,
+        embeddings=embedder.encode(chunks).tolist(),
+        ids=[f'c{i}' for i in range(len(chunks))])
+
+# Retrieve
+q_embed = embedder.encode([query]).tolist()
+hits = col.query(query_embeddings=q_embed, n_results=5)
+context = '\n---\n'.join(hits['documents'][0])</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -548,7 +549,7 @@
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">Anthropic's internal 'Constitutional AI' uses a multi-agent setup where one model generates responses and another critiques them against ethical principles — a form of peer-to-peer agent architecture.</p>
+        <p class="dyk-text">The original RAG paper (Lewis et al., 2020) showed that retrieval-augmented models outperformed fully parametric models on knowledge-intensive tasks while using 10x fewer parameters.</p>
       </div>
     </div>
 
@@ -559,7 +560,7 @@
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">In an orchestrator-worker architecture, what is the orchestrator's primary job?</div>
+        <div class="quiz-question">What problem does RAG primarily solve for AI agents?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -576,7 +577,7 @@
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>AutoGen: Multi-Agent Conversation Framework<span class="resource-arrow">→</span></a><a href="https://www.crewai.com/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>CrewAI — Role-playing Multi-Agent Framework<span class="resource-arrow">→</span></a>
+          <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Original RAG Paper (Lewis et al.)<span class="resource-arrow">→</span></a><a href="https://docs.llamaindex.ai/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LlamaIndex RAG Docs<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -599,7 +600,7 @@
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 5.
+      15 topics in rotation. Currently on topic 6.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -607,15 +608,15 @@
 
 <script>
   // Progress bar
-  const pct = Math.round((5 / 15) * 100);
+  const pct = Math.round((6 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["Execute all tool calls directly", "Manage context, delegate sub-tasks, and synthesize results", "Store all memory", "Write the final code"];
+    const quizOptions = ["Making the model run faster", "Enabling answers about large/private knowledge bases not in the model's weights", "Reducing API costs", "Allowing the agent to write code"];
     const correctAnswer = 1;
-    const explanation = "The orchestrator is the coordinator: it plans, delegates to specialized workers, and assembles their outputs \u2014 it doesn't do the ground-level work itself.";
+    const explanation = "RAG bridges the gap between a model's frozen training knowledge and the dynamic, large-scale, private knowledge an agent needs to access at runtime.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
