@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — Retrieval-Augmented Generation (RAG)</title>
+  <title>Agentic AI Daily — Agent Evaluation & Benchmarking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #ef4444;
-      --accent-light: #ef444422;
-      --accent-mid: #ef444444;
+      --accent: #14b8a6;
+      --accent-light: #14b8a622;
+      --accent-mid: #14b8a644;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #ef444433;
+      --glow: 0 0 40px #14b8a633;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #ef444418 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #ef44440f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #14b8a618 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #14b8a60f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #ef4444cc);
+      background: linear-gradient(135deg, var(--accent), #14b8a6cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #ef444466);
+      filter: drop-shadow(0 0 40px #14b8a666);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #ef4444cc);
+      background: linear-gradient(90deg, var(--accent), #14b8a6cc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 July 19, 2026</span>
-      <span class="topic-counter">Topic 6 / 15</span>
+      <span class="date-badge">📅 July 20, 2026</span>
+      <span class="topic-counter">Topic 7 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Knowledge
+      Quality
     </div>
     <h1>
-      <span class="highlight">Retrieval-Augmented Generation (RAG)</span>
+      <span class="highlight">Agent Evaluation & Benchmarking</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">📚</div>
+  <div class="hero-emoji">📊</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">RAG</span><span class="term-chip">Vector embeddings</span><span class="term-chip">Chunking</span><span class="term-chip">Retrieval</span><span class="term-chip">Re-ranking</span>
+    <span class="term-chip">Evaluation</span><span class="term-chip">LLM-as-judge</span><span class="term-chip">Trajectory</span><span class="term-chip">GAIA</span><span class="term-chip">Benchmarking</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Grounding Agents in Facts</h2>
+        <h2>How Do You Know It Works?</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          <strong>RAG</strong> lets agents answer questions about documents, codebases, or knowledge bases that are too large to fit in a context window — or that weren't in the model's training data.<br><br>The RAG pipeline:<br>1. <strong>Index</strong> — split documents into chunks, embed each chunk as a vector, store in a vector DB<br>2. <strong>Retrieve</strong> — at query time, embed the query and find the top-k most similar chunks<br>3. <strong>Generate</strong> — pass the retrieved chunks + query to the LLM, which answers using them<br><br>Advanced RAG techniques:<br>• <strong>Hybrid search</strong> — combine vector similarity with keyword (BM25) search<br>• <strong>Re-ranking</strong> — use a second model to re-score retrieved chunks before generation<br>• <strong>HyDE</strong> — generate a hypothetical answer first, then search for similar real documents
+          Evaluating agents is harder than evaluating a classifier — there's no single right answer and success spans multiple steps. Key evaluation dimensions:<br><br><strong>Task success rate</strong> — did the agent complete the goal? (binary or graded)<br><strong>Step efficiency</strong> — how many tool calls / tokens did it take vs. optimal?<br><strong>Faithfulness</strong> — are factual claims grounded in retrieved context?<br><strong>Safety</strong> — did it avoid taking harmful, irreversible, or unauthorized actions?<br><br>Evaluation strategies:<br>• <strong>LLM-as-judge</strong> — use another LLM to grade outputs against a rubric<br>• <strong>Trajectory evaluation</strong> — evaluate each step, not just the final answer<br>• <strong>Golden dataset</strong> — manually labeled examples with expected tool calls and outputs
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">RAG Pipeline</div>
-        <div class="pattern-desc">Index → Retrieve → Augment → Generate — the four-step pattern for knowledge-grounded agents.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Chunk documents (200-500 tokens)</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Embed chunks with embedding model</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Store in vector DB</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Query: embed user question</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Retrieve top-k similar chunks</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Inject into LLM prompt</div></div><div class="step-item"><div class="step-num">7</div><div class="step-text">Generate grounded answer</div></div></div>
+        <div class="pattern-name">LLM-as-Judge</div>
+        <div class="pattern-desc">Use a powerful LLM to evaluate another agent's output against a rubric — scalable, no human labels needed.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Run agent on test case</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Collect full trajectory (inputs, tool calls, outputs)</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Pass to judge LLM with rubric</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Judge scores on: correctness, efficiency, safety</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Aggregate scores across test suite</div></div></div>
       </div>
     </div>
 
@@ -511,28 +511,25 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — RAG Pipeline</span>
+        <span class="card-title">Code Example — LLM-as-Judge</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>from sentence_transformers import SentenceTransformer
-import chromadb
+          <pre>def llm_judge(task, agent_output, rubric):
+    prompt = f"""
+You are an expert evaluator. Score the agent's output.
 
-embedder = SentenceTransformer('all-MiniLM-L6-v2')
-db = chromadb.Client()
-col = db.create_collection('docs')
+Task: {task}
+Agent Output: {agent_output}
 
-# Index
-chunks = split_documents(docs, chunk_size=400)
-col.add(documents=chunks,
-        embeddings=embedder.encode(chunks).tolist(),
-        ids=[f'c{i}' for i in range(len(chunks))])
+Rubric:
+{rubric}
 
-# Retrieve
-q_embed = embedder.encode([query]).tolist()
-hits = col.query(query_embeddings=q_embed, n_results=5)
-context = '\n---\n'.join(hits['documents'][0])</pre>
+Respond with JSON: {{\"score\": 0-10, \"reason\": \"...\"}}
+"""
+    response = judge_llm.complete(prompt)
+    return json.loads(response)</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -549,7 +546,7 @@ context = '\n---\n'.join(hits['documents'][0])</pre>
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">The original RAG paper (Lewis et al., 2020) showed that retrieval-augmented models outperformed fully parametric models on knowledge-intensive tasks while using 10x fewer parameters.</p>
+        <p class="dyk-text">The GAIA benchmark (2023) tests agents on real-world tasks requiring multi-step reasoning + tool use. GPT-4 scored only 15% on hard tasks — far below human performance of 92%, showing how much room for improvement exists.</p>
       </div>
     </div>
 
@@ -560,7 +557,7 @@ context = '\n---\n'.join(hits['documents'][0])</pre>
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">What problem does RAG primarily solve for AI agents?</div>
+        <div class="quiz-question">What is 'trajectory evaluation' for agents?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -577,7 +574,7 @@ context = '\n---\n'.join(hits['documents'][0])</pre>
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Original RAG Paper (Lewis et al.)<span class="resource-arrow">→</span></a><a href="https://docs.llamaindex.ai/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LlamaIndex RAG Docs<span class="resource-arrow">→</span></a>
+          <a href="https://arxiv.org/abs/2311.12983" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>GAIA Benchmark Paper<span class="resource-arrow">→</span></a><a href="https://ragas.io/" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Ragas — RAG Evaluation Framework<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -600,7 +597,7 @@ context = '\n---\n'.join(hits['documents'][0])</pre>
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 6.
+      15 topics in rotation. Currently on topic 7.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -608,15 +605,15 @@ context = '\n---\n'.join(hits['documents'][0])</pre>
 
 <script>
   // Progress bar
-  const pct = Math.round((6 / 15) * 100);
+  const pct = Math.round((7 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["Making the model run faster", "Enabling answers about large/private knowledge bases not in the model's weights", "Reducing API costs", "Allowing the agent to write code"];
+    const quizOptions = ["Evaluating only the final answer", "Scoring each individual step/tool call in the agent's execution path", "Measuring GPU usage", "Counting the number of API calls"];
     const correctAnswer = 1;
-    const explanation = "RAG bridges the gap between a model's frozen training knowledge and the dynamic, large-scale, private knowledge an agent needs to access at runtime.";
+    const explanation = "Trajectory evaluation scores every decision point in the agent's run \u2014 which tools it chose, in what order, with what arguments \u2014 giving a richer picture than final-answer scoring alone.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
