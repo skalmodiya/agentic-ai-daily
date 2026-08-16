@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Daily — Tool Use & Function Calling</title>
+  <title>Agentic AI Daily — Planning & Task Decomposition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #f59e0b;
-      --accent-light: #f59e0b22;
-      --accent-mid: #f59e0b44;
+      --accent: #10b981;
+      --accent-light: #10b98122;
+      --accent-mid: #10b98144;
       --bg: #0a0b0f;
       --bg2: #111318;
       --bg3: #1a1d26;
@@ -25,7 +25,7 @@
       --radius: 16px;
       --radius-sm: 10px;
       --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --glow: 0 0 40px #f59e0b33;
+      --glow: 0 0 40px #10b98133;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0; z-index: -1;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, #f59e0b18 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, #f59e0b0f 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 20% 10%, #10b98118 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #10b9810f 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -110,7 +110,7 @@
       margin-bottom: 24px;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), #f59e0bcc);
+      background: linear-gradient(135deg, var(--accent), #10b981cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -122,7 +122,7 @@
 
     .hero-emoji {
       font-size: 120px; line-height: 1;
-      filter: drop-shadow(0 0 40px #f59e0b66);
+      filter: drop-shadow(0 0 40px #10b98166);
       animation: float 4s ease-in-out infinite;
     }
 
@@ -372,7 +372,7 @@
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), #f59e0bcc);
+      background: linear-gradient(90deg, var(--accent), #10b981cc);
       transition: width 1s ease;
     }
     .progress-pct {
@@ -440,8 +440,8 @@
       Agentic AI<span class="logo-dot">.</span>daily
     </div>
     <div class="header-meta">
-      <span class="date-badge">📅 August 15, 2026</span>
-      <span class="topic-counter">Topic 3 / 15</span>
+      <span class="date-badge">📅 August 16, 2026</span>
+      <span class="topic-counter">Topic 4 / 15</span>
     </div>
   </div>
 </header>
@@ -450,24 +450,24 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-tag">
-      Tools
+      Planning
     </div>
     <h1>
-      <span class="highlight">Tool Use & Function Calling</span>
+      <span class="highlight">Planning & Task Decomposition</span>
     </h1>
     <p class="hero-desc">
       Your daily deep-dive into Agentic AI. Fresh topic every day.
       Build intuition, master patterns, ace interviews.
     </p>
   </div>
-  <div class="hero-emoji">🔧</div>
+  <div class="hero-emoji">📋</div>
 </section>
 
 <!-- KEY TERMS -->
 <div class="terms-strip">
   <div class="terms-inner">
     <span class="terms-label">Key terms</span>
-    <span class="term-chip">Function calling</span><span class="term-chip">Tool schema</span><span class="term-chip">JSON schema</span><span class="term-chip">Dispatch</span><span class="term-chip">Idempotency</span>
+    <span class="term-chip">Task decomposition</span><span class="term-chip">Static planning</span><span class="term-chip">Dynamic planning</span><span class="term-chip">Hierarchical planning</span><span class="term-chip">Replanning</span>
   </div>
 </div>
 
@@ -484,9 +484,9 @@
         <span class="card-title">Today's Concept</span>
       </div>
       <div class="card-body">
-        <h2>Giving Agents Hands</h2>
+        <h2>Breaking Problems Down</h2>
         <div style="font-size:15px; color: var(--text2); line-height:1.8;">
-          A language model alone can only <em>generate text</em>. To act on the world, it needs <strong>tools</strong>: callable functions that let it search, compute, read files, call APIs, and more.<br><br>Modern LLMs support native <strong>function calling</strong> — you provide a JSON schema describing available tools, and the model returns structured calls when it decides to use one.<br><br>Key design principles for agent tools:<br>• <strong>Single responsibility</strong> — each tool does one thing well<br>• <strong>Explicit schemas</strong> — clear parameter names and types reduce hallucination<br>• <strong>Error messages matter</strong> — a tool that returns 'file not found: reports/q3.pdf' helps the agent recover<br>• <strong>Idempotency</strong> — tools the agent might call multiple times should be safe to retry
+          Complex tasks can't be solved in one step. A capable agent must <strong>decompose</strong> a high-level goal into an ordered sequence of sub-tasks — a plan.<br><br>There are two major planning styles:<br><br><strong>Static planning</strong> — generate the full plan upfront, then execute. Fast and predictable, but brittle if early steps fail or reveal new information.<br><br><strong>Dynamic planning</strong> — generate the next step based on current observations. More resilient to surprises, but harder to reason about globally.<br><br>The most robust agents use <em>hierarchical planning</em>: a high-level planner breaks the goal into milestones, and sub-agents handle each milestone independently.
         </div>
       </div>
     </div>
@@ -498,9 +498,9 @@
         <span class="card-title">Design Pattern</span>
       </div>
       <div class="card-body">
-        <div class="pattern-name">Tool Schema + Dispatch</div>
-        <div class="pattern-desc">Define tools as JSON schemas, let the LLM choose which to call, then dispatch to real Python functions.</div>
-        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Define tool schemas (name, description, parameters)</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Pass schemas in system prompt or API tools field</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">LLM returns tool_call with name + args</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Dispatcher routes to Python function</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Return result as tool_result message</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">LLM continues reasoning</div></div></div>
+        <div class="pattern-name">Plan-and-Execute</div>
+        <div class="pattern-desc">Separate the planning phase (list of steps) from the execution phase (run each step). Enables step-level retry and parallelism.</div>
+        <div class="steps-flow"><div class="step-item"><div class="step-num">1</div><div class="step-text">Receive high-level goal</div></div><div class="step-item"><div class="step-num">2</div><div class="step-text">Planner LLM generates ordered steps</div></div><div class="step-item"><div class="step-num">3</div><div class="step-text">Store plan</div></div><div class="step-item"><div class="step-num">4</div><div class="step-text">Executor runs step[0]</div></div><div class="step-item"><div class="step-num">5</div><div class="step-text">Evaluate result</div></div><div class="step-item"><div class="step-num">6</div><div class="step-text">Update plan if needed</div></div><div class="step-item"><div class="step-num">7</div><div class="step-text">Advance to next step</div></div></div>
       </div>
     </div>
 
@@ -511,26 +511,24 @@
     <div class="card">
       <div class="card-header">
         <div class="card-icon">💻</div>
-        <span class="card-title">Code Example — Tool Schema + Dispatch</span>
+        <span class="card-title">Code Example — Plan-and-Execute</span>
       </div>
       <div class="card-body" style="padding-bottom: 0;">
         <div class="code-block">
           <span class="code-lang">Python</span>
-          <pre>tools = [{
-  'name': 'search_web',
-  'description': 'Search the web for current information',
-  'input_schema': {
-    'type': 'object',
-    'properties': {
-      'query': {'type': 'string', 'description': 'Search query'}
-    },
-    'required': ['query']
-  }
-}]
+          <pre>def plan_and_execute(goal: str, tools: list):
+    # Phase 1: Generate plan
+    plan = planner_llm.generate(f'Break into steps: {goal}')
+    steps = parse_steps(plan)  # ['Step 1...', 'Step 2...']
 
-# Claude returns:
-# {'type':'tool_use', 'name':'search_web', 'input':{'query':'...'}}
-# Your code dispatches it to real function</pre>
+    results = []
+    for step in steps:
+        # Phase 2: Execute each step
+        result = executor_llm.run(step, tools, context=results)
+        results.append(result)
+        if is_blocked(result):
+            steps = replanner.update(steps, result)
+    return synthesize(results)</pre>
         </div>
       </div>
       <div style="height: 24px;"></div>
@@ -547,7 +545,7 @@
         <span class="card-title">Did You Know?</span>
       </div>
       <div class="card-body">
-        <p class="dyk-text">Anthropic's Claude supports up to 128 parallel tool calls in a single response, enabling agents to fan out research tasks and gather results simultaneously.</p>
+        <p class="dyk-text">The 'Tree of Thoughts' technique from Princeton (2023) lets agents explore multiple planning branches simultaneously — like a chess engine considering move trees — dramatically improving success on hard reasoning tasks.</p>
       </div>
     </div>
 
@@ -558,7 +556,7 @@
         <span class="card-title">Quick Quiz</span>
       </div>
       <div class="card-body">
-        <div class="quiz-question">Why is an explicit JSON schema important when defining agent tools?</div>
+        <div class="quiz-question">What is the main advantage of dynamic planning over static planning?</div>
         <div id="quiz-options"></div>
         <div id="quiz-feedback"></div>
       </div>
@@ -575,7 +573,7 @@
       </div>
       <div class="card-body">
         <div class="resources-grid">
-          <a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Anthropic Tool Use Guide<span class="resource-arrow">→</span></a><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>OpenAI Function Calling Docs<span class="resource-arrow">→</span></a>
+          <a href="https://arxiv.org/abs/2305.10601" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>Tree of Thoughts Paper<span class="resource-arrow">→</span></a><a href="https://python.langchain.com/docs/modules/agents/agent_types/plan_and_execute" target="_blank" rel="noopener" class="resource-link"><span class="resource-icon">🔗</span>LangChain Plan-and-Execute Agent<span class="resource-arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -598,7 +596,7 @@
     <div class="footer-logo">🤖 Agentic AI Daily</div>
     <p class="footer-sub">
       Auto-generated every day via GitHub Actions &amp; Python.
-      15 topics in rotation. Currently on topic 3.
+      15 topics in rotation. Currently on topic 4.
     </p>
     <span class="footer-badge">Built with ❤️ and GitHub Actions</span>
   </div>
@@ -606,15 +604,15 @@
 
 <script>
   // Progress bar
-  const pct = Math.round((3 / 15) * 100);
+  const pct = Math.round((4 / 15) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-pct').textContent = pct + '% complete';
 
   // Quiz
   
-    const quizOptions = ["It makes the API call faster", "It reduces hallucination by giving the model precise parameter expectations", "It encrypts tool calls", "JSON is required by all LLM providers"];
+    const quizOptions = ["It's always faster", "It can adapt to unexpected results mid-execution", "It requires fewer LLM calls", "It doesn't need tools"];
     const correctAnswer = 1;
-    const explanation = "A clear schema with typed, named parameters and descriptions gives the model exactly what it needs to construct valid tool calls without guessing.";
+    const explanation = "Dynamic planning observes the result of each step and can replan on the fly, making it far more resilient when the real world doesn't match initial assumptions.";
 
     function initQuiz() {
         const container = document.getElementById('quiz-options');
